@@ -49,6 +49,10 @@ def get_user(c, user_id):
         if x[20]:
             time_played = time.strftime('%Y-%m-%d %H:%M:%S',
                                         time.localtime(int(x[20])//1000))
+        if x[2] == '':
+            ban_flag = True
+        else:
+            ban_flag = False
 
         r = {'name': x[1],
              'user_id': user_id,
@@ -64,7 +68,9 @@ def get_user(c, user_id):
              'miss_count': x[17],
              'time_played': time_played,
              'clear_type': x[21],
-             'rating': x[22]
+             'rating': x[22],
+             'ticket': x[26],
+             'ban_flag': ban_flag
              }
 
     return r
